@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wildtierbeobachtung</title>
+  <link rel="stylesheet" href="style.css">
+ <script src="jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<div class="logo-container">
+  <img src="Logo.jpg.avif" alt="Logo" class="logo">
+</div>
+<div class="tabs">
+  <button class="tab-button" onclick="openTab('tieranlegend')">Tier und Standort Anlegen</button>
+</div>
+<div id="tieranlegend" class="tab-content">
+  <h2>Tier und Standort Anlegen</h2>
+  <form id="tier-form">
+    <div class="form-container">
+      <div class="form-section">
+        <h3>Tier Details</h3>
+        <label for="gewicht">Ungefähres Gewicht:</label>
+        <input type="number" id="gewicht" name="gewicht" required>
+        <label for="groesse">Ungefähre Größe:</label>
+        <input type="number" id="groesse" name="groesse" required>
+        <label for="alter">Ungefähres Alter:</label>
+        <input type="number" id="alter" name="alter" required>
+        <label for="genus">Genus:</label>
+        <input type="text" id="genus" name="genus" required>
+        <label for="geschlecht">Geschlecht:</label>
+        <select id="geschlecht" name="geschlecht" required>
+          <option value="männlich">Männlich</option>
+          <option value="weiblich">Weiblich</option>
+        </select>
+        <label for="uhrzeit">Uhrzeit:</label>
+        <input type="time" id="uhrzeit" name="uhrzeit" required>
+      </div>
+      <div class="form-section">
+        <h3>Standort Details</h3>
+        <label for="datum">Datum der Sichtung:</label>
+        <input type="date" id="datum" name="datum" required>
+        <button type="submit">Speichern</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  function openTab(tabName) {
+    var i;
+    var x = document.getElementsByClassName("tab-content");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+  }
+  
+  
+  $('#tier-form').on('submit',function(e){
+  e.preventDefault();	
+  let user = {}
+  user.ID = parseInt(Math.random() * new Date())
+  user.gewicht= e.target.gewicht.value
+  user.groesse=e.target.groesse.value
+  user.alter = e.target.alter.value
+  user.gewicht = e.target.gewicht.value
+ user.genus = e.target.genus.value
+  axios.post('http://localhost:8080/api/tier',user).then(res=>{
+  
+
+  console.log(e,res);})
+  })
+</script>
+</body>
+</html>
