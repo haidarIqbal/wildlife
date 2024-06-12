@@ -52,6 +52,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>action</th>
         <th>Ungefähres Gewicht</th>
         <th>Ungefähre Größe</th>
         <th>Ungefähres Alter</th>
@@ -93,6 +94,8 @@ let location = {
 axios.post('http://localhost:8080/api/tier',animal).then(res=>{
   })
   axios.post('http://localhost:8080/api/standort',location).then(res=>{
+    window.location.reload()
+
   })
   });
   getTableData();
@@ -104,8 +107,21 @@ axios.post('http://localhost:8080/api/tier',animal).then(res=>{
       res.data.map((eachResult)=>{
         let eachTr = document.createElement('tr');
         Object.keys(eachResult).map((eachTdItem)=>{
-          let eachTd = document.createElement('td')
-          eachTd.innerText =eachResult[eachTdItem]
+          let eachTd = document.createElement('td');
+          if(eachTdItem =='id'){
+            let btn = document.createElement('button');
+            btn.innerText = 'Delete';
+            btn.addEventListener('click',()=>{
+              deleteRow(eachResult[eachTdItem])
+            })
+            eachTd.append(btn);
+            eachTr.append(eachTd)
+
+            return
+          }
+
+          eachTd.innerText =eachResult[eachTdItem];
+
           eachTr.append(eachTd)
         })
         tbody.append(eachTr);
@@ -113,6 +129,13 @@ axios.post('http://localhost:8080/api/tier',animal).then(res=>{
     }
   })
 
+}
+
+function deleteRow(id)
+{
+  axios.delete(`http://localhost:8080/api/tier/${id}`).then(res=>{
+    window.location.reload()
+  })
 }
 
 </script>

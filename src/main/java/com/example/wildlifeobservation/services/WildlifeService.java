@@ -29,6 +29,9 @@ public class WildlifeService {
     public void saveStandort(Standort standort) {
         standortRepository.save(standort);
     }
+    public void deletetier(Long id) {
+        tierRepository.deleteById(id);
+    }
 }
 
 
