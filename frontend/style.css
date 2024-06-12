@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('Bild1.jpg.avif') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: white; /* Weiße Schriftfarbe für den gesamten Body */
+}
+
+.logo-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 100px; /* Kleinere und dezentere Breite des Logos */
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: #006400; /* Dunkelgrüne Farbe */
+    color: white; /* Weiße Schriftfarbe */
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin: 0 10px;
+}
+
+.tab-button:hover {
+    background: #004d00; /* Dunkleres Grün beim Hover */
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+    color: white; /* Weiße Schriftfarbe */
+}
+
+.tab-content h2 {
+    text-align: center;
+    color: white; /* Weiße Schriftfarbe */
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    color: white; /* Weiße Schriftfarbe */
+}
+
+.form-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white; /* Weiße Schriftfarbe */
+}
+
+form label {
+    margin: 10px 0 5px;
+    color: white; /* Weiße Schriftfarbe */
+    font-weight: bold;
+}
+
+form input, form select {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 2px solid white; /* Weißer Rand für Kontrast zum grünen Hintergrund */
+    border-radius: 5px;
+    color: white; /* Weiße Schriftfarbe */
+    background: transparent; /* Transparenter Hintergrund, um die weiße Schrift besser sichtbar zu machen */
+}
+
+form button {
+    background: #28a745;
+    color: white; /* Weiße Schriftfarbe */
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+form button:hover {
+    background: #218838;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Table Header Styles */
+  thead th {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Table Body Styles */
+  tbody td {
+    padding: 10px;
+  }
+  
+  /* Hover Effect */
+ 

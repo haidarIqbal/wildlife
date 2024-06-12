@@ -1,0 +1,12 @@
+.classpath
+.project
+/.gradle/
+caches
+wrapper
+.tmp
+/build/
+
+/.settings
+
+/.idea/
+/.metadata/

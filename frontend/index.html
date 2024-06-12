@@ -47,6 +47,21 @@
     </div>
   </form>
 </div>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ungefähres Gewicht</th>
+        <th>Ungefähre Größe</th>
+        <th>Ungefähres Alter</th>
+        <th>Genus</th>
+        <th>Geschlecht</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
 <script>
   function openTab(tabName) {
     var i;
@@ -60,18 +75,46 @@
   
   $('#tier-form').on('submit',function(e){
   e.preventDefault();	
-  let user = {}
-  user.ID = parseInt(Math.random() * new Date())
-  user.gewicht= e.target.gewicht.value
-  user.groesse=e.target.groesse.value
-  user.alter = e.target.alter.value
-  user.gewicht = e.target.gewicht.value
- user.genus = e.target.genus.value
-  axios.post('http://localhost:8080/api/tier',user).then(res=>{
-  
+  let animal = {}
+  animal.ID = parseInt(Math.random() * new Date())
+  animal.gewicht= e.target.gewicht.value
+  animal.groesse=e.target.groesse.value
+  animal.alter = e.target.alter.value
+  animal.gewicht = e.target.gewicht.value
+ animal.genus = e.target.genus.value
 
-  console.log(e,res);})
+
+ let dateTime = new Date(e.target.datum.value + 'T' + e.target.uhrzeit.value);
+
+let location = {
+  uhrzeit: dateTime.toLocaleTimeString("en-US", { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+  datum: dateTime.toISOString().slice(0, 10)
+}; 
+axios.post('http://localhost:8080/api/tier',animal).then(res=>{
   })
+  axios.post('http://localhost:8080/api/standort',location).then(res=>{
+  })
+  });
+  getTableData();
+  
+  function getTableData(){
+  axios.get('http://localhost:8080/api/getAllTier').then(res=>{
+    if(res.data.length){
+      let tbody = $('#tbody');
+      res.data.map((eachResult)=>{
+        let eachTr = document.createElement('tr');
+        Object.keys(eachResult).map((eachTdItem)=>{
+          let eachTd = document.createElement('td')
+          eachTd.innerText =eachResult[eachTdItem]
+          eachTr.append(eachTd)
+        })
+        tbody.append(eachTr);
+      })
+    }
+  })
+
+}
+
 </script>
 </body>
 </html>

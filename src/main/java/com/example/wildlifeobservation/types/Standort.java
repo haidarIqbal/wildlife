@@ -1,5 +1,4 @@
-package com.example.wildlifeobservation.model;
-
+package com.example.wildlifeobservation.types;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

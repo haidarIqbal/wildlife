@@ -1,11 +1,9 @@
-package com.example.wildlifeobservation.model;
+package com.example.wildlifeobservation.types;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Table;
 
 
 @Entity
@@ -21,7 +19,9 @@ public class Tier {
     private String geschlecht;
 
     // Default-Konstruktor
-    public Tier() {}
+    public Tier() {
+
+    }
 
     // Parameterisierter Konstruktor
     public Tier(double gewicht, double groesse, int alter, String genus, String geschlecht) {

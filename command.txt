@@ -1,0 +1,4 @@
+cls & gradlew bootJar & java -jar build/libs/wildlife-observation-0.0.1-SNAPSHOT.jar
+
+
+java -cp h2.jar org.h2.tools.Server
